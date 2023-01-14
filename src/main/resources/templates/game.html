@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/players-list-navbar.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" th:href="@{/Game.css}">
+  <script  th:inline="javascript" th:src="@{/Game.js}"></script>
+</head>
+<body onload="hideElements()">
+
+<header th:replace="/Navbar.html :: header"></header>
+
+<h1>Game</h1>
+<form th:action="@{/play}" method="post">
+<div class="container">
+  <div class="row">
+    <div class="column" style="background-color:#aaa; height: auto;">
+      <h2>Player 1</h2>
+      <div class="select">
+      <label><em>Choose player 1:</em></label>
+        <select id="player1dropdown" name="firstPlayerName" th:onchange="checkInput(); showImage('player1dropdown', 'player1Image')">
+          <option value="noSelected" selected>Please select..</option>
+          <option id="player1Option" th:each="player : ${players}" th:text="${player.name}" th:value="${player.name}" th:onclick="passImageName([[${player.imageName}]])"></option>
+        </select>
+      </div>
+      <div id="player1Image">
+
+      </div>
+    </div>
+    <div class="column" style="background-color:#bbb; height: auto;">
+      <h2 id="middleColumnText">VS</h2>
+      <!-- <button class="btn btn-sm btn-outline-primary" id="submitBtn" th:onclick="playGame()">Play</button> -->
+    </div>
+    <div class="column" style="background-color:#aaa; height: auto;">
+      <h2>Player 2</h2>
+      <div class="select">
+        <label><em>Choose player 2:</em></label>
+        <select id="player2dropdown" name="secondPlayerName" onchange="checkInput(); showImage('player2dropdown', 'player2Image')">
+          <option value="noSelected" selected>Please select..</option>
+          <option th:each="player : ${players}" th:text="${player.name}" th:value="${player.name}"></option>
+        </select>
+      </div>
+      <div id="player2Image">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="/gameTournament.html :: formField(tournaments=${tournaments})"></div>
+<div>
+    <button type="submit" id="playBtn">Play</button>
+</div>
+</form>
+<!-- <div th:replace="/gameResults.html"></div> -->
+</body>
+</html>

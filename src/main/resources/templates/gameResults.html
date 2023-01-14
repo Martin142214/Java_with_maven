@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/Game.css}">
+</head>
+<body>
+<div class="container" id="game">
+  <span onclick="document.getElementById('game').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    <div class="row" style="background-image: url('https://www.perfect-tennis.com/wp-content/uploads/2019/02/tennis-court-dimensions.jpg'); background-position-x: center; background-position-y: center">
+      <div class="column">
+        <h2 id="player1"></h2>
+        <h5 id="player1score">socre1</h5>
+      </div>
+      <div class="column">
+        <h2 id="timer"></h2>
+        <input type="submit" id="submitBtn" value="Play">
+      </div>
+      <div class="column">
+        <h2 id="player2"></h2>
+        <h5 id="player2score">score2</h5>
+      </div>
+    </div>
+</div>
+</body>
+</html>

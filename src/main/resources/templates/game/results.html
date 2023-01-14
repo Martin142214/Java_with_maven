@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/players-list-navbar.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/Game.css}">
+    <script  th:inline="javascript" th:src="@{/Game.js}"></script>
+</head>
+<body>
+<header th:replace="/Navbar.html :: header"></header>
+<h1>Game</h1>
+<div class="container">
+    <div class="row">
+        <div class="column" style="background-color:#aaa; height: auto;">
+            <h2 th:text="${playerOne.name}"></h2>
+            <div id="player1Image">
+                <img th:src="@{|/images/${playerOne.imageName}|}" style="width: auto;">
+            </div>
+            <div id="player1Info" style="float: right;">
+                <h4>Current points: <b th:text="${playerOne.rankPoints}"></b></h4>
+            </div>
+            <div id="winner1points" th:if="${playerOne.name == result.winner}" style="margin-top: 25px; float: right;">
+                <h4>Points won: +<b th:text="${tournamentPoints}"></b> points</h4>
+            </div>
+            <!--
+            <div class="select">
+                <label><em>Choose player 1:</em></label>
+                <select id="player1dropdown" name="firstPlayerName" onchange="checkInput(); showImage('player1dropdown', 'player1Image')">
+                    <option value="noSelected" selected>Please select..</option>
+                    <option th:each="player : ${players}" th:text="${player.name}" th:value="${player.name}"></option>
+                </select>
+            </div>
+            -->
+
+        </div>
+        <div class="column" style="background-color:#bbb; height: auto;">
+            <h2 id="middleColumnText">VS</h2>
+            <div id="firstSetResult" style="margin-top: 50%;">
+                <h2 th:text="${result.firstSetResult}"></h2>
+            </div>
+            <div id="secondSetResult">
+                <h2 th:text="${result.secondSetResult}"></h2>
+            </div>
+            <div id="date" style="margin-top: 50%;">
+                <h2 th:text="${result.dateOfClash}"></h2>
+            </div>
+            <div style="margin-left: 50px; margin-top: 50px;">
+                <a href="/players" style="font-size: 20px;">Finish</a>
+            </div>
+            <!-- <button class="btn btn-sm btn-outline-primary" id="submitBtn" th:onclick="playGame()">Play</button> -->
+        </div>
+        <div class="column" style="background-color:#aaa; height: auto;">
+            <h2 th:text="${playerTwo.name}"></h2>
+            <!--
+            <div class="select">
+                <label><em>Choose player 2:</em></label>
+                <select id="player2dropdown" name="secondPlayerName" onchange="checkInput(); showImage('player2dropdown', 'player2Image')">
+                    <option value="noSelected" selected>Please select..</option>
+                    <option th:each="player : ${players}" th:text="${player.name}" th:value="${player.name}"></option>
+                </select>
+            </div>
+            -->
+            <div id="player2Image">
+                <img th:src="@{|/images/${playerTwo.imageName}|}" style="width: auto;">
+            </div>
+            <div id="player2Info" >
+                <h4>Current points: <b th:text="${playerTwo.rankPoints}"></b></h4>
+            </div>
+            <div id="winner2points" th:if="${playerTwo.name == result.winner}" style="margin-top: 25px;">
+                <h4>Points won: +<b th:text="${tournamentPoints}"></b> points</h4>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

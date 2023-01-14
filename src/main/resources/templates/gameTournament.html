@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/Game.css}">
+</head>
+<body>
+<div class="container" id="tournament" th:fragment="formField (tournaments)">
+  <div class="row2" style="background-image: url('https://www.perfect-tennis.com/wp-content/uploads/2019/02/tennis-court-dimensions.jpg'); background-position-x: center; background-position-y: center">
+    <div id="tourInputContainer">
+      <h4 for="tournament" id="tournamentLabel">Please select tournament</h4>
+      <select id="tournamentDropdown" name="tournamentName" onchange="playBtnAppear()">
+        <!--<option th:each="tournament : ${tournaments}" th:text="${tournament.name}" th:value="${tournament.id}" name="tournamentId"></option> -->
+        <option value="noSelected" selected>Please select..</option>
+        <option th:each="tournament : ${tournaments}" th:text="${tournament.name}" th:value="${tournament.name}"></option>
+      </select>
+    </div>
+  </div>
+</div>
+</body>
+</html>

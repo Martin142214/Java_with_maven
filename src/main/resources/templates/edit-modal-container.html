@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/modal-container.css}">
+</head>
+<body>
+<div th:fragment="formField (name, email)" id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <!-- The action method is set dynamically by the javascript in the players-list.html file -->
+  <form class="modal-content animate" id="modalForm" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label><b>Name</b></label>
+      <input type="text" class="form-control" name="name" id="name" required>
+
+      <label><b>Email</b></label>
+      <input type="text" class="form-control" name="email" id="email" required>
+
+      <label><b>Image</b></label>
+      <p style="text-size: 20px;">Current filename: <b id="currentImageName"></b></p>
+      <input type="file" class="form-control" id="imageName" name="imageName" required>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+      <!-- <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label> -->
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
